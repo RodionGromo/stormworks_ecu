@@ -1,0 +1,77 @@
+(xN - number, xB - on/off)
+
+This version has Hold RPS, which relies on PID control (maybe only difference from v2)
+
+The setup is:
+PID control -> PID controller (Advanced) block -> Throttle control -> Engine control
+
+This is PID control part:
+Inputs:
+1N - engine RPS
+2N - minimal RPS to trigger PID activation (from property)
+3N - RPS target
+4B - allow PID button
+5B - allow floating points (softmode)
+
+Outputs:
+1B - PID active
+2N - engine rps to PID "PROCESS VARIABLE"
+3N - RPS target to PID "SETPOINT"
+
+Property:
+"pid activation" - (0 - 5, def: 1.5)
+-----------------------------------------------------------------
+This is PID controller (Advanced) part:
+Inputs:
+SETPOINT - from 3N of PID control
+PROCESS VARIABLE - from 2N of PID control
+PROPORTIONAL GAIN - your choice (def: 0.05)
+INTEGRAL GAIN - your choice (def: 0.0005)
+DERIVATIVE GAIN - your choice (def: 0.000035)
+ACTIVE - 1B from PID control
+
+The P,I and D default values are set from my experience, but should work fine with anything 
+
+Output:
+CONTROL OUTPUT: clamp from 0 to 1
+------------------------------------------------------------------
+This is throttle control part:
+Inputs:
+1 and 2 ignored since they are coming from cylinder composite
+3N - engine temperature from cylinder composite
+4N - throttle*
+5N - engine RPS
+6N - start/stop button
+
+*throttle is switchboxed with 4B from PID control:
+if on: from clamped PID output
+if off: from throttle input to microcontroller
+
+Properties:
+"idle RPS" - (0 - 60, def: 5)
+"max RPS" - (10 - 60, def: 60)
+"rev cycler" - (1 - 60, def: 5, units: ticks)
+"starter timeout (sec)" - (1 - 10, def: 3, units: seconds)
+"max temp" - (25 - 105, def: 105)
+"idle throttle" - (0 - 1, def: 0.3)
+
+Output:
+1N - throttle
+2B - starter
+-------------------------------------------------------------------
+This is engine control part:
+Inputs:
+CC - from cylinder composite
+1N CC - air volume
+2N CC - fuel volume
+3 is skipped (temperature from CC)
+4N - throttle 
+
+Properties:
+"afr const" - 14.7
+"const dec/inc" - 0.01
+
+Outputs:
+1N - air manifold
+2N - fuel manifold
+3N - afr (optional)
