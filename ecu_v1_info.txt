@@ -1,3 +1,4 @@
+First ever CECU ( Custom Engine Control Unit ) to be made by me
 (xN - number, xB - boolean)
 Inputs:
 1N - engine temperature
