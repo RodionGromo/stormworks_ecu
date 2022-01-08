@@ -11,10 +11,10 @@ Outputs:
 2N - fuel manifold
 
 Properties:
-1N - "Max temp" (0 - 95, default: 95)
-2N - "Idle RPS" (5 - 15, default: 6)
-3N - "Min fuel inflow" (0 - 1, default: 0.49)
-4N - "idle throttle" (0 - 1, default: 0.2)
-5N - "max rps" (0 - 100, default: 55)
-6N - "additional turbo fuel" (0 - 0.5, default: 0.5)
-7N - "rev limiter cycles" (0 - 60, default: 15, unit: ticks)
+"Max temp" (0 - 95, default: 95)
+"Idle RPS" (5 - 15, default: 6)
+"Min fuel inflow" (0 - 1, default: 0.49)
+"idle throttle" (0 - 1, default: 0.2)
+"max rps" (0 - 100, default: 55)
+"additional turbo fuel" (0 - 0.5, default: 0.5)
+"rev limiter cycles" (0 - 60, default: 15, unit: ticks)
