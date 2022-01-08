@@ -1,0 +1,19 @@
+(xN - number, xB - boolean)
+Inputs:
+1N - engine temperature
+2N - engine RPS
+3N - throttle
+4N - turbo lever
+
+Outputs:
+1N - air manifold
+2N - fuel manifold
+
+Properties:
+1N - "Max temp"
+2N - "Idle RPS"
+3N - "Min fuel inflow"
+4N - "idle throttle"
+5N - "max rps"
+6N - "additional turbo fuel"
+7N - "rev limiter cycles"
