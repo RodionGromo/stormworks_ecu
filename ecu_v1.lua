@@ -1,4 +1,5 @@
 -- ecu v1
+-- Do not copy these comments or it may not fit in 4096 symbol limit!
 turboed = false
 cycles = 0;
 
