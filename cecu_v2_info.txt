@@ -1,4 +1,7 @@
 (xN - number, xB - boolean (on/off))
+Setup is:
+Throttle control -> Engine control
+
 This is throttle control part
 Inputs:
 1N - throttle
