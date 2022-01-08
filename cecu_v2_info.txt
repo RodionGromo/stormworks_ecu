@@ -1,0 +1,45 @@
+(xN - number, xB - boolean (on/off))
+This is throttle control part
+Inputs:
+1N - throttle
+2N - engine temperature (preferably from cylinders)
+3N - engine RPS
+4N - target RPS
+5B - start\stop button
+6B - free throttle mode
+
+Outputs:
+1N - throttle
+2B - starter
+3B - cooler
+4N - startCount (ticks passed from start, optional)
+5B - starting (optional)
+6B - stopping (optional)
+
+Properties:
+"Max Temperature" (0 - 105, def: 95)
+"Idle RPS" - (4 - 10, def: 5)
+"RPS redline" - (10 - 60, def: 15)
+"rev limiter cycle" - (1 - 60, def: 5, units: ticks)
+"Idle throttle" - (0 - 1, def: 0.3)
+"starting timeout (seconds)" - (0 - 60, def: 5)
+
+------------------------------------------------------------------------
+
+This is fuel control part:
+Inputs:
+(CC - taken from cylinder composite)
+1N CC - air volume 
+2N CC - fuel volume 
+3N CC - temperature
+4N - throttle from throttle control
+
+Outputs: 
+1N - fuel manifold
+2N - air manifold
+3N - current AFR (optional)
+
+Properties:
+"ratio inc/dec" - def: 0.001
+"stoich constant" - def: 14.7 
+
